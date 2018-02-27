@@ -18,7 +18,7 @@ plugins {
 apply plugin: 'kotlin'
 
 group 'org.abimon'
-mainClassName = "org.abimon.paranoia.Paranoia"
+mainClassName = "org.abimon.emojithing.EmojiThing"
 
 sourceCompatibility = 1.8
 
