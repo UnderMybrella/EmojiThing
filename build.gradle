@@ -1,0 +1,51 @@
+buildscript {
+    ext.kotlin_version = '1.2.21'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '2.0.2'
+}
+
+apply plugin: 'kotlin'
+
+group 'org.abimon'
+mainClassName = "org.abimon.paranoia.Paranoia"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter() //This prevents issues with transitive dependencies
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url "https://maven.abimon.org"
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    compile("org.abimon:HeavensHarmony:15") { exclude group: "com.github.austinv11" }
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.3'
+    compile "com.github.austinv11:Discord4J:aad585f"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
