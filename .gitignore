@@ -6,3 +6,6 @@
 .idea
 out
 gen
+
+keys/*
+config.yaml
